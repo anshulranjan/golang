@@ -9,7 +9,7 @@ import (
 
 func input(a int) int {
 	var input string
-	fmt.Printf("Let's guess the number. Attempt %d", a)
+	fmt.Printf("Let's guess the number between 1 and 10. Attempt %d", a)
 	fmt.Println()
 	fmt.Scanln(&input)
 	number, err := strconv.Atoi(input)
@@ -22,14 +22,14 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	givennumber := input(1)
 	guess := 10
-	if givennumber == 0 {
+	if givennumber < 0 {
 		fmt.Println("Please choose a postive number")
 		return
 	}
 	turn := 0
 	for ; turn < 4; turn++ {
 		n := rand.Intn(guess + 1)
-		if n == guess {
+		if n == givennumber {
 			if turn == 0 {
 				fmt.Println("Congrats!!! Since you guess in first attempt you won special prize")
 			} else {
@@ -40,8 +40,7 @@ func main() {
 			givennumber = input(turn + 2)
 		}
 	}
-	if turn == 5 {
-		fmt.Println("You lost. Try Again")
+	if turn == 4 {
+		fmt.Println("Sorry You lost. Try Again")
 	}
-
 }
