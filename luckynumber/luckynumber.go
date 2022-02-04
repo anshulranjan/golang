@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+//this program allow the user to guess the number between 1 and 10. The user will get 5 attempt.
+//the guess number will also change after each failed attempt.
+//the user will get special prize if he guess the number in first attempt.
 func input(a int) int {
 	var input string
 	fmt.Printf("Let's guess the number between 1 and 10. Attempt %d", a)
